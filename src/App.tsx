@@ -1,9 +1,20 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { Provider } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./components/layout";
+import HomePage from "./page/home";
+import store from "./store/store";
 
-function App() {
-  return <div className="App">cracker</div>;
-}
+const App: React.FC = () => (
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </Provider>
+);
 
 export default App;
